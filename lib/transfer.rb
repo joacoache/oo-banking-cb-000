@@ -15,7 +15,7 @@ class Transfer
 
   def execute_transaction
     execute_only_once = true
-    if @sender.balance >= @amount 
+    if @sender.balance >= @amount
       @sender.balance -= @amount
       @receiver.balance += @amount
       @status = "complete"
@@ -28,6 +28,7 @@ class Transfer
 
 
   def reverse_transfer
+    @amount_for_reverse
   end
 
 
