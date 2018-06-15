@@ -28,7 +28,9 @@ class Transfer
 
 
   def reverse_transfer
-    @amount_for_reverse
+    @sender.balance += @amount_for_reverse
+    @reciever.balance -= @amount_for_reverse
+    @status = "reversed"
   end
 
 
