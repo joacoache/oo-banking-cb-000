@@ -1,3 +1,7 @@
+require 'memoize'
+
+include Memoize
+
 class Transfer
   attr_accessor :sender, :receiver, :status, :amount
 
@@ -23,6 +27,8 @@ class Transfer
       "Transaction rejected. Please check your account balance."
     end
   end
+  
+  memoize :thing_that_should_happen_once
 
   def reverse_transfer
   end
