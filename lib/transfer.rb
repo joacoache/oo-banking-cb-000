@@ -19,6 +19,7 @@ class Transfer
       @sender.balance -= @amount
       @receiver.balance += @amount
       @status = "complete"
+      @amount_for_reverse += @amount
       @amount = 0
     else
       @status = "rejected"
