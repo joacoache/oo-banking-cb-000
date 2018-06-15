@@ -1,7 +1,3 @@
-require 'memoize'
-
-include Memoize
-
 class Transfer
   attr_accessor :sender, :receiver, :status, :amount
 
@@ -17,18 +13,18 @@ class Transfer
   end
 
   def execute_transaction
-    if @sender.balance >= @amount
+    execute_only_once = true
+    if @sender.balance >= @amount && execute_only_once == true
       @sender.balance -= @amount
       @receiver.balance += @amount
       @status = "complete"
-      @amount = 0
+      execute_only_once = false
     else
       @status = "rejected"
       "Transaction rejected. Please check your account balance."
     end
   end
-  
-  memoize :thing_that_should_happen_once
+
 
   def reverse_transfer
   end
